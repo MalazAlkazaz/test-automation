@@ -37,5 +37,51 @@ def test_list_authors(monkeypatch):
     assert collections.Counter(authors) == collections.Counter (['Brown Dan'])
 
 
+def test_list_name_empty(monkeypatch):
+
+    def mock_get_books(*args):
+        return [
+            { 'id': 'aaa-001', 'name': 'Origine', 'author': { 'firstname': '', 'lastname': '' }},
+
+        ]
+
+    monkeypatch.setattr(BookFetcherService, 'get_books', mock_get_books)
+
+    book_service = BookService(book_fetcher_service=BookFetcherService())
+    authors = book_service.list_books_authors()
+
+    assert collections.Counter(authors) == collections.Counter (' ')
+
+
+def test_list_livre_empty(monkeypatch):
+
+    def mock_get_books(*args):
+        return [
+            { 'id': '', 'name': '', 'author': { 'firstname': '', 'lastname': '' }},
+
+        ]
+
+    monkeypatch.setattr(BookFetcherService, 'get_books', mock_get_books)
+
+    book_service = BookService(book_fetcher_service=BookFetcherService())
+    authors = book_service.list_books_authors()
+
+    assert collections.Counter(authors) == collections.Counter (' ')
+
+def test_list_no_livre(monkeypatch):
+
+    def mock_get_books(*args):
+        return [
+            { 'id': '', 'name': '', 'author': { 'firstname': '', 'lastname': '' }},
+
+        ]
+
+    monkeypatch.setattr(BookFetcherService, 'get_books', mock_get_books)
+
+    book_service = BookService(book_fetcher_service=BookFetcherService())
+    authors = book_service.list_books_authors()
+
+    assert collections.Counter(authors) == collections.Counter (' ')
+
 
 
