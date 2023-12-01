@@ -19,6 +19,12 @@ jobs:
         run: pytest
       - name: linter
         run: ruff
+      - name: static type
+        run: mypy
+
+        # execute lint (ruff)
+         # execute static type lint (mypy)
+
 
 
 
