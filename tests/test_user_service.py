@@ -7,7 +7,7 @@ def test_list_user_ids(monkeypatch):
     # instead of calling the mocked server, we use a controlled dataset
     def mock_get_users(*args):
         return [
-            {'id': '1', 'email': 'lolo@gmail.com'}
+            {'id': '1', 'email': 'llo@gmail.com'}
 
         ]
 
