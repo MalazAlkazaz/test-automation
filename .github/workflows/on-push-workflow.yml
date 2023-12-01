@@ -17,3 +17,14 @@ jobs:
         run: pip install --no-cache-dir -r requirements.txt
       - name: Unit tests
         run: pytest
+      - name: linter
+        run: ruff check src
+      - name: static type
+        run: mypy
+
+        # execute lint (ruff)
+         # execute static type lint (mypy)
+
+
+
+
